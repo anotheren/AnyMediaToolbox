@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "AnyBinaryCodable",
+        "repositoryURL": "https://github.com/anotheren/AnyBinaryCodable",
+        "state": {
+          "branch": null,
+          "revision": "62266c0ced92ab85b2b5d8cbf168765d0ddedd3b",
+          "version": "1.0.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
