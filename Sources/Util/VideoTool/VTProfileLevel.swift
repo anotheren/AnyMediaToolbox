@@ -20,7 +20,7 @@ public struct VTProfileLevel: RawRepresentable, Hashable {
 extension VTProfileLevel {
     
     public var isBaseline: Bool {
-        return (rawValue as String).contains("baseline")
+        return (rawValue as String).contains("Baseline")
     }
 }
 
