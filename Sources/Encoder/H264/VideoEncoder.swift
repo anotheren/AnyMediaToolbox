@@ -12,8 +12,6 @@ public protocol VideoEncoder: class {
     
     var delegate: VideoEncoderDelegate? { get set }
     
-    var muted: Bool { get set }
-    
     var running: Bool { get }
     func startRunning()
     func stopRunning()

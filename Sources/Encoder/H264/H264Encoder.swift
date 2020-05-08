@@ -187,9 +187,6 @@ final public class H264Encoder: VideoEncoder {
         }
     }
     
-    private var lastImageBuffer: CVImageBuffer?
-    public var muted: Bool = false
-    
     public private(set) var running: Bool = false
     
     public init() { }
@@ -200,9 +197,6 @@ final public class H264Encoder: VideoEncoder {
         guard let session = self.session else { return }
         var infoFlags = VTEncodeInfoFlags()
         status = VTCompressionSessionEncodeFrame(session, imageBuffer: imageBuffer, presentationTimeStamp: presentationTimeStamp, duration: duration, frameProperties: nil, sourceFrameRefcon: nil, infoFlagsOut: &infoFlags)
-        if !muted {
-            lastImageBuffer = imageBuffer
-        }
     }
     
     public func startRunning() {
@@ -214,7 +208,6 @@ final public class H264Encoder: VideoEncoder {
     public func stopRunning() {
         lockQueue.async {
             self.session = nil
-            self.lastImageBuffer = nil
             self.formatDescription = nil
             self.running = false
         }
