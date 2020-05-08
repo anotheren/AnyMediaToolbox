@@ -6,7 +6,6 @@
 //  Copyright © 2018-2020 anotheren.com. All rights reserved.
 //
 
-import Foundation
 import CoreMedia
 
 extension CMBlockBuffer {
