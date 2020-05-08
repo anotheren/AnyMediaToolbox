@@ -28,6 +28,7 @@ public enum ChannelConfiguration: UInt8 {
     case frontCenterAndFrontLeftAndFrontRightAndSideLeftAndSideRightAndBackLeftAndBackRightLFE = 7
 }
 
+// MARK: - CustomStringConvertible
 extension ChannelConfiguration: CustomStringConvertible {
     
     public var description: String {

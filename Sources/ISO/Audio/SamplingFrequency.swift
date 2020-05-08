@@ -89,6 +89,7 @@ public enum SamplingFrequency: UInt8 {
     }
 }
 
+// MARK: - CustomStringConvertible
 extension SamplingFrequency: CustomStringConvertible {
     
     public var description: String {

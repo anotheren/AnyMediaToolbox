@@ -7,15 +7,13 @@
 //
 
 import Foundation
-import CoreMedia
-import CoreAudio
+import CoreAudioTypes
 
 public struct AudioSpecificConfig {
     
     public let type: AudioObjectType
     public let frequency: SamplingFrequency
     public let channel: ChannelConfiguration
-    public var frameLengthFlag: Bool = false
     
     public var data: Data {
         var buffer = Data(repeating: 0, count: 2)
@@ -30,7 +28,7 @@ public struct AudioSpecificConfig {
         asbd.mFormatID = kAudioFormatMPEG4AAC
         asbd.mFormatFlags = UInt32(type.rawValue)
         asbd.mBytesPerPacket = 0
-        asbd.mFramesPerPacket = frameLengthFlag ? 960 : 1024
+        asbd.mFramesPerPacket = 1024
         asbd.mBytesPerFrame = 0
         asbd.mChannelsPerFrame = UInt32(channel.rawValue)
         asbd.mBitsPerChannel = 0

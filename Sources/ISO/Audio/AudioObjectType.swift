@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import CoreAudio
+import CoreAudioTypes
 
 public enum AudioObjectType: UInt8 {
     
@@ -48,12 +48,13 @@ public enum AudioObjectType: UInt8 {
     }
 }
 
+// MARK: - CustomStringConvertible
 extension AudioObjectType: CustomStringConvertible {
     
     public var description: String {
         switch self {
         case .unknown:
-            return "unknow"
+            return "UNKNOW"
         case .aacMain:
             return "AAC_Main"
         case .aacLC:
