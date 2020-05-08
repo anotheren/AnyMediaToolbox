@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -25,10 +25,12 @@
 		A01FA2B324642FEA00A02DDC /* Ex+CMSampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FA29B24642FEA00A02DDC /* Ex+CMSampleBuffer.swift */; };
 		A01FA2B424642FEA00A02DDC /* VideoEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FA29E24642FEA00A02DDC /* VideoEncoder.swift */; };
 		A01FA2B524642FEA00A02DDC /* H264Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FA29F24642FEA00A02DDC /* H264Encoder.swift */; };
-		A01FA2B824643A9400A02DDC /* AnyBinaryCodable in Frameworks */ = {isa = PBXBuildFile; productRef = A01FA2B724643A9400A02DDC /* AnyBinaryCodable */; };
+		C78F56CE2938060A68855D9B /* Pods_AnyMediaToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4121FA1A3E6A5C75040E0763 /* Pods_AnyMediaToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07AA2F2F73498914EA64D4BA /* Pods-AnyMediaToolbox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyMediaToolbox.release.xcconfig"; path = "Target Support Files/Pods-AnyMediaToolbox/Pods-AnyMediaToolbox.release.xcconfig"; sourceTree = "<group>"; };
+		4121FA1A3E6A5C75040E0763 /* Pods_AnyMediaToolbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnyMediaToolbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A01FA27524642CB500A02DDC /* AnyMediaToolbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AnyMediaToolbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A01FA27824642CB500A02DDC /* AnyMediaToolbox.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnyMediaToolbox.h; sourceTree = "<group>"; };
 		A01FA27924642CB500A02DDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +51,7 @@
 		A01FA29B24642FEA00A02DDC /* Ex+CMSampleBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ex+CMSampleBuffer.swift"; sourceTree = "<group>"; };
 		A01FA29E24642FEA00A02DDC /* VideoEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoEncoder.swift; sourceTree = "<group>"; };
 		A01FA29F24642FEA00A02DDC /* H264Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = H264Encoder.swift; sourceTree = "<group>"; };
+		AF14851C3C115F58F6236B3B /* Pods-AnyMediaToolbox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyMediaToolbox.debug.xcconfig"; path = "Target Support Files/Pods-AnyMediaToolbox/Pods-AnyMediaToolbox.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,18 +59,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A01FA2B824643A9400A02DDC /* AnyBinaryCodable in Frameworks */,
+				C78F56CE2938060A68855D9B /* Pods_AnyMediaToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		763FEB9895A93A480C009AFF /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AF14851C3C115F58F6236B3B /* Pods-AnyMediaToolbox.debug.xcconfig */,
+				07AA2F2F73498914EA64D4BA /* Pods-AnyMediaToolbox.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		A01FA26B24642CB500A02DDC = {
 			isa = PBXGroup;
 			children = (
 				A01FA27724642CB500A02DDC /* Sources */,
 				A01FA27624642CB500A02DDC /* Products */,
+				763FEB9895A93A480C009AFF /* Pods */,
+				EA43EC27BAC6D0A1CE025446 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +176,14 @@
 			path = H264;
 			sourceTree = "<group>";
 		};
+		EA43EC27BAC6D0A1CE025446 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4121FA1A3E6A5C75040E0763 /* Pods_AnyMediaToolbox.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -179,6 +202,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A01FA27D24642CB500A02DDC /* Build configuration list for PBXNativeTarget "AnyMediaToolbox" */;
 			buildPhases = (
+				B25C120167D7AF69D7795BA6 /* [CP] Check Pods Manifest.lock */,
 				A01FA27024642CB500A02DDC /* Headers */,
 				A01FA27124642CB500A02DDC /* Sources */,
 				A01FA27224642CB500A02DDC /* Frameworks */,
@@ -189,9 +213,6 @@
 			dependencies = (
 			);
 			name = AnyMediaToolbox;
-			packageProductDependencies = (
-				A01FA2B724643A9400A02DDC /* AnyBinaryCodable */,
-			);
 			productName = AnyMediaToolbox;
 			productReference = A01FA27524642CB500A02DDC /* AnyMediaToolbox.framework */;
 			productType = "com.apple.product-type.framework";
@@ -219,9 +240,6 @@
 				Base,
 			);
 			mainGroup = A01FA26B24642CB500A02DDC;
-			packageReferences = (
-				A01FA2B624643A9400A02DDC /* XCRemoteSwiftPackageReference "AnyBinaryCodable" */,
-			);
 			productRefGroup = A01FA27624642CB500A02DDC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -240,6 +258,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B25C120167D7AF69D7795BA6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AnyMediaToolbox-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A01FA27124642CB500A02DDC /* Sources */ = {
@@ -391,6 +434,7 @@
 		};
 		A01FA27E24642CB500A02DDC /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF14851C3C115F58F6236B3B /* Pods-AnyMediaToolbox.debug.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -417,6 +461,7 @@
 		};
 		A01FA27F24642CB500A02DDC /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 07AA2F2F73498914EA64D4BA /* Pods-AnyMediaToolbox.release.xcconfig */;
 			buildSettings = {
 				APPLICATION_EXTENSION_API_ONLY = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -463,25 +508,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		A01FA2B624643A9400A02DDC /* XCRemoteSwiftPackageReference "AnyBinaryCodable" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/anotheren/AnyBinaryCodable";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		A01FA2B724643A9400A02DDC /* AnyBinaryCodable */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = A01FA2B624643A9400A02DDC /* XCRemoteSwiftPackageReference "AnyBinaryCodable" */;
-			productName = AnyBinaryCodable;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A01FA26C24642CB500A02DDC /* Project object */;
 }
