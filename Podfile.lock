@@ -1,5 +1,5 @@
 PODS:
-  - AnyBinaryCodable (1.0.0)
+  - AnyBinaryCodable (1.0.1)
 
 DEPENDENCIES:
   - AnyBinaryCodable
@@ -9,8 +9,8 @@ SPEC REPOS:
     - AnyBinaryCodable
 
 SPEC CHECKSUMS:
-  AnyBinaryCodable: 2c6d9bbd5fde86020450d6a2e2b8bec498b3d4ac
+  AnyBinaryCodable: c0053ddf14477dfba652b4b93743a61b257f3725
 
 PODFILE CHECKSUM: e076eb0327671911f3f1dabd67adb0964ee3c58d
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.9.3

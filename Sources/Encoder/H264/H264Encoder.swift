@@ -9,16 +9,23 @@
 import CoreMedia
 import VideoToolbox
 
-final public class H264Encoder: VideoEncoder {
+public protocol H264EncoderDelegate: class {
     
-    public weak var delegate: VideoEncoderDelegate?
+    func encoder(_ encoder: H264Encoder, didSet formatDescription: CMVideoFormatDescription?)
+    func encoder(_ encoder: H264Encoder, didOutput buffer: VideoH264Buffer)
+    func encoder(_ encoder: H264Encoder, didCatch error: Error)
+}
+
+final public class H264Encoder {
+    
+    public weak var delegate: H264EncoderDelegate?
     
     private let lockQueue = DispatchQueue(label: "com.anotheren.AnyMediaToolbox.H264Encoder")
     
     private var formatDescription: CMVideoFormatDescription? {
         didSet {
             if formatDescription != oldValue {
-                delegate?.videoEncoder(self, didSet: formatDescription)
+                delegate?.encoder(self, didSet: formatDescription)
             }
         }
     }
@@ -26,7 +33,8 @@ final public class H264Encoder: VideoEncoder {
     private var status: OSStatus = noErr {
         didSet {
             if status != noErr {
-                delegate?.videoEncoder(self, didCatch: VideoEncoderError.vtEncoderError(status))
+                let error = NSError(domain: NSOSStatusErrorDomain, code: Int(status))
+                delegate?.encoder(self, didCatch: error)
             }
         }
     }
@@ -126,11 +134,12 @@ final public class H264Encoder: VideoEncoder {
         return attributes
     }
     
-    private var callback: VTCompressionOutputCallback = {(outputCallbackRefCon: UnsafeMutableRawPointer?, sourceFrameRefCon: UnsafeMutableRawPointer?, status: OSStatus, infoFlags: VTEncodeInfoFlags, sampleBuffer: CMSampleBuffer?) in
-        guard let sampleBuffer: CMSampleBuffer = sampleBuffer, status == noErr else { return }
-        let encoder = unsafeBitCast(outputCallbackRefCon, to: H264Encoder.self)
-        encoder.formatDescription = sampleBuffer.formatDescription
-        encoder.delegate?.videoEncoder(encoder, didOutput: sampleBuffer)
+    private var callback: VTCompressionOutputCallback = { (outputCallbackRefCon: UnsafeMutableRawPointer?, sourceFrameRefCon: UnsafeMutableRawPointer?, status: OSStatus, infoFlags: VTEncodeInfoFlags, sampleBuffer: CMSampleBuffer?) in
+        guard let sampleBuffer: CMSampleBuffer = sampleBuffer, let refCon = sourceFrameRefCon, status == noErr else { return }
+        let encoder = Unmanaged<H264Encoder>.fromOpaque(refCon).takeUnretainedValue()
+        encoder.formatDescription = CMSampleBufferGetFormatDescription(sampleBuffer)
+        let buffer = AnyVideoH264Buffer(sampleBuffer: sampleBuffer)
+        encoder.delegate?.encoder(encoder, didOutput: buffer)
     }
     
     private var properties: [VTCompressionPropertyKey: CFTypeRef] {
@@ -171,7 +180,16 @@ final public class H264Encoder: VideoEncoder {
     private var session: VTCompressionSession? {
         get {
             if _session == nil {
-                status = VTCompressionSessionCreate(allocator: kCFAllocatorDefault, width: width, height: height, codecType: kCMVideoCodecType_H264, encoderSpecification: nil, imageBufferAttributes: sourceImageBufferAttributes as CFDictionary, compressedDataAllocator: nil, outputCallback: callback, refcon: unsafeBitCast(self, to: UnsafeMutableRawPointer.self), compressionSessionOut: &_session)
+                status = VTCompressionSessionCreate(allocator: kCFAllocatorDefault,
+                                                    width: width,
+                                                    height: height,
+                                                    codecType: kCMVideoCodecType_H264,
+                                                    encoderSpecification: nil,
+                                                    imageBufferAttributes: sourceImageBufferAttributes as CFDictionary,
+                                                    compressedDataAllocator: nil,
+                                                    outputCallback: callback,
+                                                    refcon: Unmanaged.passUnretained(self).toOpaque(),
+                                                    compressionSessionOut: &_session)
                 guard status == noErr, let session = _session else { return nil }
                 invalidateSession = false
                 status = session.setProperties(properties)
@@ -191,12 +209,18 @@ final public class H264Encoder: VideoEncoder {
     
     public init() { }
     
-    public func encode(imageBuffer: CVImageBuffer, presentationTimeStamp: CMTime, duration: CMTime) {
+    public func encode(buffer: VideoPixelBuffer) {
         guard running else { return }
         if invalidateSession { session = nil }
         guard let session = self.session else { return }
         var infoFlags = VTEncodeInfoFlags()
-        status = VTCompressionSessionEncodeFrame(session, imageBuffer: imageBuffer, presentationTimeStamp: presentationTimeStamp, duration: duration, frameProperties: nil, sourceFrameRefcon: nil, infoFlagsOut: &infoFlags)
+        status = VTCompressionSessionEncodeFrame(session,
+                                                 imageBuffer: buffer.pixelBuffer,
+                                                 presentationTimeStamp: buffer.presentationTimeStamp,
+                                                 duration: buffer.duration,
+                                                 frameProperties: nil,
+                                                 sourceFrameRefcon: nil,
+                                                 infoFlagsOut: &infoFlags)
     }
     
     public func startRunning() {

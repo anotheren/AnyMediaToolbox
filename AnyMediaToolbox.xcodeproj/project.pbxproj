@@ -23,8 +23,14 @@
 		A01FA2B124642FEA00A02DDC /* Ex+AudioStreamBasicDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FA29924642FEA00A02DDC /* Ex+AudioStreamBasicDescription.swift */; };
 		A01FA2B224642FEA00A02DDC /* Ex+VTCompressionSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FA29A24642FEA00A02DDC /* Ex+VTCompressionSession.swift */; };
 		A01FA2B324642FEA00A02DDC /* Ex+CMSampleBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FA29B24642FEA00A02DDC /* Ex+CMSampleBuffer.swift */; };
-		A01FA2B424642FEA00A02DDC /* VideoEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FA29E24642FEA00A02DDC /* VideoEncoder.swift */; };
 		A01FA2B524642FEA00A02DDC /* H264Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FA29F24642FEA00A02DDC /* H264Encoder.swift */; };
+		A05824492498B8860006E2D1 /* AudioPCMBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824422498B8860006E2D1 /* AudioPCMBuffer.swift */; };
+		A058244A2498B8860006E2D1 /* VideoBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824432498B8860006E2D1 /* VideoBuffer.swift */; };
+		A058244B2498B8860006E2D1 /* AudioBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824442498B8860006E2D1 /* AudioBuffer.swift */; };
+		A058244C2498B8860006E2D1 /* VideoH264Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824452498B8860006E2D1 /* VideoH264Buffer.swift */; };
+		A058244D2498B8860006E2D1 /* AudioAACBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824462498B8860006E2D1 /* AudioAACBuffer.swift */; };
+		A058244E2498B8860006E2D1 /* MediaBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824472498B8860006E2D1 /* MediaBuffer.swift */; };
+		A058244F2498B8860006E2D1 /* VideoPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824482498B8860006E2D1 /* VideoPixelBuffer.swift */; };
 		C78F56CE2938060A68855D9B /* Pods_AnyMediaToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4121FA1A3E6A5C75040E0763 /* Pods_AnyMediaToolbox.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,8 +55,14 @@
 		A01FA29924642FEA00A02DDC /* Ex+AudioStreamBasicDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ex+AudioStreamBasicDescription.swift"; sourceTree = "<group>"; };
 		A01FA29A24642FEA00A02DDC /* Ex+VTCompressionSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ex+VTCompressionSession.swift"; sourceTree = "<group>"; };
 		A01FA29B24642FEA00A02DDC /* Ex+CMSampleBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ex+CMSampleBuffer.swift"; sourceTree = "<group>"; };
-		A01FA29E24642FEA00A02DDC /* VideoEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoEncoder.swift; sourceTree = "<group>"; };
 		A01FA29F24642FEA00A02DDC /* H264Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = H264Encoder.swift; sourceTree = "<group>"; };
+		A05824422498B8860006E2D1 /* AudioPCMBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPCMBuffer.swift; sourceTree = "<group>"; };
+		A05824432498B8860006E2D1 /* VideoBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoBuffer.swift; sourceTree = "<group>"; };
+		A05824442498B8860006E2D1 /* AudioBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioBuffer.swift; sourceTree = "<group>"; };
+		A05824452498B8860006E2D1 /* VideoH264Buffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoH264Buffer.swift; sourceTree = "<group>"; };
+		A05824462498B8860006E2D1 /* AudioAACBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioAACBuffer.swift; sourceTree = "<group>"; };
+		A05824472498B8860006E2D1 /* MediaBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaBuffer.swift; sourceTree = "<group>"; };
+		A05824482498B8860006E2D1 /* VideoPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPixelBuffer.swift; sourceTree = "<group>"; };
 		A06918642464FEBD00A4E117 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A06918652464FEBD00A4E117 /* AnyMediaToolbox.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AnyMediaToolbox.podspec; sourceTree = "<group>"; };
 		A06918662464FEBD00A4E117 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
@@ -104,6 +116,7 @@
 			children = (
 				A01FA27824642CB500A02DDC /* AnyMediaToolbox.h */,
 				A01FA27924642CB500A02DDC /* Info.plist */,
+				A05824402498B86F0006E2D1 /* Model */,
 				A01FA29C24642FEA00A02DDC /* Encoder */,
 				A01FA29524642FEA00A02DDC /* Extension */,
 				A01FA28B24642FEA00A02DDC /* ISO */,
@@ -175,10 +188,31 @@
 		A01FA29D24642FEA00A02DDC /* H264 */ = {
 			isa = PBXGroup;
 			children = (
-				A01FA29E24642FEA00A02DDC /* VideoEncoder.swift */,
 				A01FA29F24642FEA00A02DDC /* H264Encoder.swift */,
 			);
 			path = H264;
+			sourceTree = "<group>";
+		};
+		A05824402498B86F0006E2D1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A05824412498B8750006E2D1 /* Buffer */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A05824412498B8750006E2D1 /* Buffer */ = {
+			isa = PBXGroup;
+			children = (
+				A05824472498B8860006E2D1 /* MediaBuffer.swift */,
+				A05824442498B8860006E2D1 /* AudioBuffer.swift */,
+				A05824422498B8860006E2D1 /* AudioPCMBuffer.swift */,
+				A05824462498B8860006E2D1 /* AudioAACBuffer.swift */,
+				A05824432498B8860006E2D1 /* VideoBuffer.swift */,
+				A05824482498B8860006E2D1 /* VideoPixelBuffer.swift */,
+				A05824452498B8860006E2D1 /* VideoH264Buffer.swift */,
+			);
+			path = Buffer;
 			sourceTree = "<group>";
 		};
 		EA43EC27BAC6D0A1CE025446 /* Frameworks */ = {
@@ -294,23 +328,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A058244E2498B8860006E2D1 /* MediaBuffer.swift in Sources */,
 				A01FA2A224642FEA00A02DDC /* VTScalingMode.swift in Sources */,
 				A01FA2AD24642FEA00A02DDC /* SamplingFrequency.swift in Sources */,
 				A01FA2AC24642FEA00A02DDC /* AudioObjectType.swift in Sources */,
+				A058244F2498B8860006E2D1 /* VideoPixelBuffer.swift in Sources */,
+				A058244C2498B8860006E2D1 /* VideoH264Buffer.swift in Sources */,
 				A01FA2B224642FEA00A02DDC /* Ex+VTCompressionSession.swift in Sources */,
+				A058244B2498B8860006E2D1 /* AudioBuffer.swift in Sources */,
 				A01FA2B024642FEA00A02DDC /* Ex+CMBlockBuffer.swift in Sources */,
 				A01FA2B324642FEA00A02DDC /* Ex+CMSampleBuffer.swift in Sources */,
 				A01FA2AB24642FEA00A02DDC /* AudioSpecificConfig.swift in Sources */,
+				A05824492498B8860006E2D1 /* AudioPCMBuffer.swift in Sources */,
 				A01FA2AA24642FEA00A02DDC /* ChannelConfiguration.swift in Sources */,
 				A01FA2A124642FEA00A02DDC /* VTProfileLevel.swift in Sources */,
 				A01FA2A724642FEA00A02DDC /* AVCDecoderConfigurationRecord.swift in Sources */,
 				A01FA2AE24642FEA00A02DDC /* Ex+CMFormatDescription.swift in Sources */,
+				A058244D2498B8860006E2D1 /* AudioAACBuffer.swift in Sources */,
 				A01FA2B124642FEA00A02DDC /* Ex+AudioStreamBasicDescription.swift in Sources */,
 				A01FA2AF24642FEA00A02DDC /* Ex+Bool.swift in Sources */,
+				A058244A2498B8860006E2D1 /* VideoBuffer.swift in Sources */,
 				A01FA2B524642FEA00A02DDC /* H264Encoder.swift in Sources */,
 				A01FA2A024642FEA00A02DDC /* VTCompressionPropertyKey.swift in Sources */,
 				A01FA2A924642FEA00A02DDC /* HEVCDecoderConfigurationRecord.swift in Sources */,
-				A01FA2B424642FEA00A02DDC /* VideoEncoder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,7 +490,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -478,7 +518,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
