@@ -145,7 +145,7 @@ extension AVCDecoderConfigurationRecord {
         self = try decoder.decode(AVCDecoderConfigurationRecord.self, from: data)
     }
     
-    public var data: Data {
+    public func dataBytes() -> Data {
         let encoder = BinaryDataEncoder()
         return encoder.encode(self)
     }
@@ -153,14 +153,7 @@ extension AVCDecoderConfigurationRecord {
 
 extension AVCDecoderConfigurationRecord {
     
-    public enum ConfigurationRecordError: Error {
-        case createFromH264ParameterSets(OSStatus)
-    }
-}
-
-extension AVCDecoderConfigurationRecord {
-    
-    public func formatDescription() throws -> CMVideoFormatDescription {
+    public func makeFormatDescription() throws -> CMVideoFormatDescription {
         let sequenceParameterSetNALUnitsArray = Array(sequenceParameterSetNALUnits[0])
         let pictureParameterSetNALUnitsArray = Array(pictureParameterSetNALUnits[0])
         var parameterSetPointers: [UnsafePointer<UInt8>] = [
@@ -173,11 +166,10 @@ extension AVCDecoderConfigurationRecord {
         ]
         
         var formatDescriptionOut: CMVideoFormatDescription?
-        let error = CMVideoFormatDescriptionCreateFromH264ParameterSets(allocator: kCFAllocatorDefault, parameterSetCount: 2, parameterSetPointers: &parameterSetPointers, parameterSetSizes: &parameterSetSizes, nalUnitHeaderLength: nalUnitHeaderLength, formatDescriptionOut: &formatDescriptionOut)
-        if let formatDescription = formatDescriptionOut {
-            return formatDescription
-        } else {
-            throw AVCDecoderConfigurationRecord.ConfigurationRecordError.createFromH264ParameterSets(error)
+        let status = CMVideoFormatDescriptionCreateFromH264ParameterSets(allocator: kCFAllocatorDefault, parameterSetCount: 2, parameterSetPointers: &parameterSetPointers, parameterSetSizes: &parameterSetSizes, nalUnitHeaderLength: nalUnitHeaderLength, formatDescriptionOut: &formatDescriptionOut)
+        guard let formatDescription = formatDescriptionOut else {
+            throw NSError(domain: NSOSStatusErrorDomain, code: Int(status))
         }
+        return formatDescription
     }
 }
