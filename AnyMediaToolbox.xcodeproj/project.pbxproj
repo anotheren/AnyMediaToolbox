@@ -180,17 +180,9 @@
 		A01FA29C24642FEA00A02DDC /* Encoder */ = {
 			isa = PBXGroup;
 			children = (
-				A01FA29D24642FEA00A02DDC /* H264 */,
-			);
-			path = Encoder;
-			sourceTree = "<group>";
-		};
-		A01FA29D24642FEA00A02DDC /* H264 */ = {
-			isa = PBXGroup;
-			children = (
 				A01FA29F24642FEA00A02DDC /* H264Encoder.swift */,
 			);
-			path = H264;
+			path = Encoder;
 			sourceTree = "<group>";
 		};
 		A05824402498B86F0006E2D1 /* Model */ = {
