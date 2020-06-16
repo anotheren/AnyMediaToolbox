@@ -20,8 +20,4 @@ extension CMSampleBuffer {
         }
         return false
     }
-    
-    public var timingInfo: CMSampleTimingInfo {
-        return CMSampleTimingInfo(duration: duration, presentationTimeStamp: presentationTimeStamp, decodeTimeStamp: decodeTimeStamp)
-    }
 }
