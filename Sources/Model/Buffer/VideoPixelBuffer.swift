@@ -21,10 +21,6 @@ extension VideoPixelBuffer {
         return .invalid
     }
     
-    public var pixelFormatType: OSType {
-        return CVPixelBufferGetPixelFormatType(pixelBuffer)
-    }
-    
     public var formatDescription: CMVideoFormatDescription? {
         return try? makeFormatDescription()
     }
@@ -38,6 +34,21 @@ extension VideoPixelBuffer {
             throw NSError(domain: NSOSStatusErrorDomain, code: Int(status))
         }
         return formatDescription
+    }
+}
+
+extension VideoPixelBuffer {
+    
+    public var pixelFormatType: OSType {
+        return CVPixelBufferGetPixelFormatType(pixelBuffer)
+    }
+    
+    public var width: Int {
+        return CVPixelBufferGetWidth(pixelBuffer)
+    }
+    
+    public var height: Int {
+        return CVPixelBufferGetHeight(pixelBuffer)
     }
 }
 
