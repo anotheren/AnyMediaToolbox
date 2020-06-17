@@ -60,7 +60,7 @@
 		A05824472498B8860006E2D1 /* MediaBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaBuffer.swift; sourceTree = "<group>"; };
 		A05824482498B8860006E2D1 /* VideoPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPixelBuffer.swift; sourceTree = "<group>"; };
 		A06918642464FEBD00A4E117 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		A06918652464FEBD00A4E117 /* AnyMediaToolbox.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AnyMediaToolbox.podspec; sourceTree = "<group>"; };
+		A06918652464FEBD00A4E117 /* AnyMediaToolbox.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AnyMediaToolbox.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A06918662464FEBD00A4E117 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		AF14851C3C115F58F6236B3B /* Pods-AnyMediaToolbox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyMediaToolbox.debug.xcconfig"; path = "Target Support Files/Pods-AnyMediaToolbox/Pods-AnyMediaToolbox.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -480,7 +480,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anotheren.AnyMediaToolbox;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -509,7 +509,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1.2;
+				MARKETING_VERSION = 1.1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.anotheren.AnyMediaToolbox;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
