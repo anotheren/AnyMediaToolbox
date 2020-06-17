@@ -45,6 +45,19 @@ extension AudioAACBuffer {
 
 extension AudioAACBuffer {
     
+    public init(buffer: AVAudioCompressedBuffer, audioTime: AVAudioTime, preferredTimescale: CMTimeScale = 1_000_000_000) {
+        let seconds = AVAudioTime.seconds(forHostTime: audioTime.hostTime)
+        self.init(buffer: buffer, seconds: seconds, preferredTimescale: preferredTimescale)
+    }
+    
+    public init(buffer: AVAudioCompressedBuffer, seconds: Double, preferredTimescale: CMTimeScale = 1_000_000_000) {
+        let presentationTimeStamp = CMTime(seconds: seconds, preferredTimescale: preferredTimescale)
+        self.init(buffer: buffer, presentationTimeStamp: presentationTimeStamp)
+    }
+}
+
+extension AudioAACBuffer {
+    
     public func dataBytes() throws -> Data {
         let audioBufferListPointer = UnsafeMutableAudioBufferListPointer(buffer.mutableAudioBufferList)
         guard let first = audioBufferListPointer.first, let data = first.mData else {
