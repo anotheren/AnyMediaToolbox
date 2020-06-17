@@ -135,7 +135,7 @@ final public class H264Encoder {
     }
     
     private var callback: VTCompressionOutputCallback = { (outputCallbackRefCon: UnsafeMutableRawPointer?, sourceFrameRefCon: UnsafeMutableRawPointer?, status: OSStatus, infoFlags: VTEncodeInfoFlags, sampleBuffer: CMSampleBuffer?) in
-        guard let sampleBuffer: CMSampleBuffer = sampleBuffer, let refCon = sourceFrameRefCon, status == noErr else { return }
+        guard let sampleBuffer: CMSampleBuffer = sampleBuffer, let refCon = outputCallbackRefCon, status == noErr else { return }
         let encoder = Unmanaged<H264Encoder>.fromOpaque(refCon).takeUnretainedValue()
         encoder.formatDescription = CMSampleBufferGetFormatDescription(sampleBuffer)
         let buffer = AnyVideoH264Buffer(sampleBuffer: sampleBuffer)
