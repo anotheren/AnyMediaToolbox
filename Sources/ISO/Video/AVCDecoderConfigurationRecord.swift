@@ -46,10 +46,12 @@ public struct AVCDecoderConfigurationRecord: Equatable {
     public let lengthSizeMinusOne: UInt8
     
     public let numOfSequenceParameterSets: UInt8
-    public let sequenceParameterSetNALUnits: [Data] // SPS
+    /// SPS
+    public let sequenceParameterSetNALUnits: [Data]
     
     public let numOfPictureParameterSets: UInt8
-    public let pictureParameterSetNALUnits: [Data] // PPS
+    /// PPS
+    public let pictureParameterSetNALUnits: [Data]
     
     public var nalUnitHeaderLength: Int32 {
         return Int32(lengthSizeMinusOne + 1)
