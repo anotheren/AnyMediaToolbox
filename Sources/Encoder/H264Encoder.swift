@@ -66,7 +66,7 @@ final public class H264Encoder {
     }
     
     #if os(macOS)
-    public var enabledHardwareEncoder: Bool = AVCEncoder.Default.enabledHardwareEncoder {
+    public var enabledHardwareEncoder: Bool = H264Encoder.Default.enabledHardwareEncoder {
         didSet {
             if enabledHardwareEncoder != oldValue {
                 invalidateSession = true
@@ -255,6 +255,7 @@ extension H264Encoder {
         static let attributes: [CFString: CFTypeRef] = [
                 kCVPixelBufferIOSurfacePropertiesKey: [:] as CFDictionary,
                 kCVPixelBufferOpenGLESCompatibilityKey: kCFBooleanTrue,
+                kCVPixelBufferMetalCompatibilityKey: kCFBooleanTrue,
             ]
         #elseif os(macOS)
         static let attributes: [CFString: CFTypeRef] = [
