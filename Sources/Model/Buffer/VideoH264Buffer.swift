@@ -40,6 +40,20 @@ extension VideoH264Buffer {
 
 extension VideoH264Buffer {
     
+    public var dependsOnOthers: Bool {
+        if let attachments: CFArray = CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, createIfNecessary: false) {
+            if let attachment = unsafeBitCast(CFArrayGetValueAtIndex(attachments, 0), to: CFDictionary.self) as? [CFString: Any] {
+                if let result = attachment[kCMSampleAttachmentKey_DependsOnOthers] as? Bool {
+                    return result
+                }
+            }
+        }
+        return false
+    }
+}
+
+extension VideoH264Buffer {
+    
     public init(data: Data, timingInfo: CMSampleTimingInfo, formatDescription: CMVideoFormatDescription) throws {
         var status: OSStatus = noErr
         
