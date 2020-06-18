@@ -29,6 +29,7 @@
 		A058244D2498B8860006E2D1 /* AudioAACBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824462498B8860006E2D1 /* AudioAACBuffer.swift */; };
 		A058244E2498B8860006E2D1 /* MediaBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824472498B8860006E2D1 /* MediaBuffer.swift */; };
 		A058244F2498B8860006E2D1 /* VideoPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824482498B8860006E2D1 /* VideoPixelBuffer.swift */; };
+		A0724DD1249B4C9B0008847B /* AACEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0724DD0249B4C9B0008847B /* AACEncoder.swift */; };
 		C78F56CE2938060A68855D9B /* Pods_AnyMediaToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4121FA1A3E6A5C75040E0763 /* Pods_AnyMediaToolbox.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		A06918642464FEBD00A4E117 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A06918652464FEBD00A4E117 /* AnyMediaToolbox.podspec */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = AnyMediaToolbox.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A06918662464FEBD00A4E117 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		A0724DD0249B4C9B0008847B /* AACEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AACEncoder.swift; sourceTree = "<group>"; };
 		AF14851C3C115F58F6236B3B /* Pods-AnyMediaToolbox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnyMediaToolbox.debug.xcconfig"; path = "Target Support Files/Pods-AnyMediaToolbox/Pods-AnyMediaToolbox.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				A01FA29F24642FEA00A02DDC /* H264Encoder.swift */,
+				A0724DD0249B4C9B0008847B /* AACEncoder.swift */,
 			);
 			path = Encoder;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				A058244A2498B8860006E2D1 /* VideoBuffer.swift in Sources */,
 				A01FA2B524642FEA00A02DDC /* H264Encoder.swift in Sources */,
 				A01FA2A024642FEA00A02DDC /* VTCompressionPropertyKey.swift in Sources */,
+				A0724DD1249B4C9B0008847B /* AACEncoder.swift in Sources */,
 				A01FA2A924642FEA00A02DDC /* HEVCDecoderConfigurationRecord.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
