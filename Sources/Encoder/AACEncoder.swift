@@ -94,7 +94,8 @@ extension AACEncoder {
                 }
                 let seconds = timeStampZero + Double(index * 1024) / buffer.format.sampleRate
                 do {
-                    let pcmBuffer = try AnyAudioPCMBuffer(dataBytes: sliceDataBytes, frameLength: 1024, format: buffer.format, seconds: seconds)
+                    let presentationTimeStamp = CMTime(seconds: seconds, preferredTimescale: buffer.presentationTimeStamp.timescale)
+                    let pcmBuffer = try AnyAudioPCMBuffer(dataBytes: sliceDataBytes, frameLength: 1024, format: buffer.format, presentationTimeStamp: presentationTimeStamp)
                     convert(from: pcmBuffer, converter: converter)
                 } catch {
                     delegate?.encoder(self, didCatch: error)

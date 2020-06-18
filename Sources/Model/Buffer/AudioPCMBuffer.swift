@@ -74,7 +74,7 @@ extension AudioPCMBuffer {
         return dataBytes
     }
     
-    public init(audioBufferList: UnsafeMutablePointer<AudioBufferList>, frameLength: UInt32, streamDescription: AudioStreamBasicDescription, seconds: Double) throws {
+    public init(audioBufferList: UnsafeMutablePointer<AudioBufferList>, frameLength: UInt32, streamDescription: AudioStreamBasicDescription, presentationTimeStamp: CMTime) throws {
         var dataBytes: [Data] = []
         for channel in UnsafeMutableAudioBufferListPointer(audioBufferList) {
             let dataByteSize = Int(channel.mDataByteSize)
@@ -87,16 +87,16 @@ extension AudioPCMBuffer {
                 dataBytes.append(data)
             }
         }
-        try self.init(dataBytes: dataBytes, frameLength: frameLength, streamDescription: streamDescription, seconds: seconds)
+        try self.init(dataBytes: dataBytes, frameLength: frameLength, streamDescription: streamDescription, presentationTimeStamp: presentationTimeStamp)
     }
     
-    public init(dataBytes: [Data], frameLength: UInt32, streamDescription: AudioStreamBasicDescription, seconds: Double) throws {
+    public init(dataBytes: [Data], frameLength: UInt32, streamDescription: AudioStreamBasicDescription, presentationTimeStamp: CMTime) throws {
         var streamDescription = streamDescription
         guard let format = AVAudioFormat(streamDescription: &streamDescription) else { throw NSError(domain: NSOSStatusErrorDomain, code: -1) }
-        try self.init(dataBytes: dataBytes, frameLength: frameLength, format: format, seconds: seconds)
+        try self.init(dataBytes: dataBytes, frameLength: frameLength, format: format, presentationTimeStamp: presentationTimeStamp)
     }
     
-    public init(dataBytes: [Data], frameLength: UInt32, format: AVAudioFormat, seconds: Double) throws {
+    public init(dataBytes: [Data], frameLength: UInt32, format: AVAudioFormat, presentationTimeStamp: CMTime) throws {
         guard let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: frameLength) else { throw NSError(domain: NSOSStatusErrorDomain, code: -1) }
         buffer.frameLength = buffer.frameCapacity
         let frameLength = Int(frameLength)
@@ -120,7 +120,7 @@ extension AudioPCMBuffer {
                 assert(copyCount == frameLength * MemoryLayout<Int16>.size)
             }
         }
-        self.init(buffer: buffer, seconds: seconds)
+        self.init(buffer: buffer, presentationTimeStamp: presentationTimeStamp)
     }
 }
 
