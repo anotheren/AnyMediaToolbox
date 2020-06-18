@@ -66,11 +66,6 @@ extension AACEncoder {
         } else {
             // merge data
             let dataBytes = buffer.dataBytes()
-            guard dataBytes.count == fragmentBytes.count else {
-                fragmentBytes.removeAll()
-                slice(buffer: buffer)
-                return
-            }
             if fragmentBytes.isEmpty {
                 fragmentBytes = dataBytes
             } else {
