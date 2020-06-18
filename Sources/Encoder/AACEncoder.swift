@@ -97,7 +97,7 @@ extension AACEncoder {
                 }
             }
             
-            if fragmentBytes[0].count > totalBuffers * 1024 {
+            if fragmentBytes[0].count > totalBuffers * 1024 * size {
                 var newFragmentBytes: [Data] = []
                 for channel in 0..<fragmentBytes.count {
                     let data = fragmentBytes[channel].subdata(in: totalBuffers*1024*size..<fragmentBytes[channel].count)
