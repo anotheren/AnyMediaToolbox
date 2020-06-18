@@ -84,7 +84,7 @@ extension AACEncoder {
             for index in 0..<totalBuffers {
                 var sliceDataBytes: [Data] = []
                 for channel in 0..<fragmentBytes.count {
-                    let data = fragmentBytes[channel].subdata(in: index*1024..<(index+1)*1024)
+                    let data = fragmentBytes[channel].subdata(in: index*1024*size..<(index+1)*1024*size)
                     sliceDataBytes.append(data)
                 }
                 let seconds = timeStampZero + Double(index * 1024) / buffer.format.sampleRate
@@ -100,7 +100,7 @@ extension AACEncoder {
             if fragmentBytes[0].count > totalBuffers * 1024 {
                 var newFragmentBytes: [Data] = []
                 for channel in 0..<fragmentBytes.count {
-                    let data = fragmentBytes[channel].subdata(in: totalBuffers*1024..<fragmentBytes[channel].count)
+                    let data = fragmentBytes[channel].subdata(in: totalBuffers*1024*size..<fragmentBytes[channel].count)
                     newFragmentBytes.append(data)
                 }
                 fragmentBytes = newFragmentBytes
