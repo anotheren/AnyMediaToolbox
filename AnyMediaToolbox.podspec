@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name = 'AnyMediaToolbox'
-    s.version = '1.1.4'
+    s.version = '1.1.5'
     s.license = 'MIT'
     s.summary = 'AnyMediaToolbox is a toolbox for CoreMedia Types'
     s.homepage = 'https://github.com/anotheren/AnyBinaryCodable'
