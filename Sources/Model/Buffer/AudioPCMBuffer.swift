@@ -37,6 +37,10 @@ extension AudioPCMBuffer {
     public var mutableAudioBufferList: UnsafeMutablePointer<AudioBufferList> {
         return buffer.mutableAudioBufferList
     }
+    
+    public var frameLength: UInt32 {
+        return buffer.frameLength
+    }
 }
 
 extension AudioPCMBuffer {
@@ -49,6 +53,74 @@ extension AudioPCMBuffer {
     public init(buffer: AVAudioPCMBuffer, seconds: Double, preferredTimescale: CMTimeScale = 1_000_000_000) {
         let presentationTimeStamp = CMTime(seconds: seconds, preferredTimescale: preferredTimescale)
         self.init(buffer: buffer, presentationTimeStamp: presentationTimeStamp)
+    }
+}
+
+extension AudioPCMBuffer {
+    
+    public func dataBytes() -> [Data] {
+        var dataBytes: [Data] = []
+        for channel in UnsafeMutableAudioBufferListPointer(mutableAudioBufferList) {
+            let dataByteSize = Int(channel.mDataByteSize)
+            if let mData = channel.mData {
+                let data = Data(bytes: mData, count: dataByteSize)
+                dataBytes.append(data)
+            } else {
+                // which means there is no data in this channel, repeating with 0
+                let data = Data(repeating: 0, count: dataByteSize)
+                dataBytes.append(data)
+            }
+        }
+        return dataBytes
+    }
+    
+    public init(audioBufferList: UnsafeMutablePointer<AudioBufferList>, frameLength: UInt32, streamDescription: AudioStreamBasicDescription, seconds: Double) throws {
+        var dataBytes: [Data] = []
+        for channel in UnsafeMutableAudioBufferListPointer(audioBufferList) {
+            let dataByteSize = Int(channel.mDataByteSize)
+            if let mData = channel.mData {
+                let data = Data(bytes: mData, count: dataByteSize)
+                dataBytes.append(data)
+            } else {
+                // which means there is no data in this channel, repeating with 0
+                let data = Data(repeating: 0, count: dataByteSize)
+                dataBytes.append(data)
+            }
+        }
+        try self.init(dataBytes: dataBytes, frameLength: frameLength, streamDescription: streamDescription, seconds: seconds)
+    }
+    
+    public init(dataBytes: [Data], frameLength: UInt32, streamDescription: AudioStreamBasicDescription, seconds: Double) throws {
+        var streamDescription = streamDescription
+        guard let format = AVAudioFormat(streamDescription: &streamDescription) else { throw NSError(domain: NSOSStatusErrorDomain, code: -1) }
+        try self.init(dataBytes: dataBytes, frameLength: frameLength, format: format, seconds: seconds)
+    }
+    
+    public init(dataBytes: [Data], frameLength: UInt32, format: AVAudioFormat, seconds: Double) throws {
+        guard let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: frameLength) else { throw NSError(domain: NSOSStatusErrorDomain, code: -1) }
+        buffer.frameLength = buffer.frameCapacity
+        let frameLength = Int(frameLength)
+        let channels = dataBytes.count
+        if let channelsPoint = buffer.floatChannelData {
+            for channel in 0..<channels {
+                let channelPoint = UnsafeMutableBufferPointer(start: channelsPoint[channel], count: frameLength)
+                let copyCount = dataBytes[channel].copyBytes(to: channelPoint)
+                assert(copyCount == frameLength * MemoryLayout<Float>.size)
+            }
+        } else if let channelsPoint = buffer.int32ChannelData {
+            for channel in 0..<channels {
+                let channelPoint = UnsafeMutableBufferPointer(start: channelsPoint[channel], count: frameLength)
+                let copyCount = dataBytes[channel].copyBytes(to: channelPoint)
+                assert(copyCount == frameLength * MemoryLayout<Int32>.size)
+            }
+        } else if let channelsPoint = buffer.int16ChannelData {
+            for channel in 0..<channels {
+                let channelPoint = UnsafeMutableBufferPointer(start: channelsPoint[channel], count: frameLength)
+                let copyCount = dataBytes[channel].copyBytes(to: channelPoint)
+                assert(copyCount == frameLength * MemoryLayout<Int16>.size)
+            }
+        }
+        self.init(buffer: buffer, seconds: seconds)
     }
 }
 
