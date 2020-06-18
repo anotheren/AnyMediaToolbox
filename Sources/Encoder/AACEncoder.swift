@@ -26,6 +26,8 @@ public final class AACEncoder {
     private var converter: AVAudioConverter?
     
     private var isRunning: Bool = false
+    
+    public init() { }
 }
 
 extension AACEncoder {
