@@ -77,3 +77,10 @@ final public class AnyAudioAACBuffer: AudioAACBuffer {
         self.presentationTimeStamp = presentationTimeStamp
     }
 }
+ 
+extension AnyAudioAACBuffer: CustomStringConvertible {
+    
+    public var description: String {
+        return "AnyAudioAACBuffer<\(buffer.packetCount)/\(buffer.packetCapacity)>"
+    }
+}

@@ -217,3 +217,10 @@ final public class AnyAudioPCMBuffer: AudioPCMBuffer {
         self.presentationTimeStamp = presentationTimeStamp
     }
 }
+
+extension AnyAudioPCMBuffer: CustomStringConvertible {
+    
+    public var description: String {
+        return "AnyAudioPCMBuffer<\(buffer.frameLength)/\(buffer.frameCapacity)>"
+    }
+}
