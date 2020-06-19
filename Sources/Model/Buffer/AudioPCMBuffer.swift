@@ -221,6 +221,6 @@ final public class AnyAudioPCMBuffer: AudioPCMBuffer {
 extension AnyAudioPCMBuffer: CustomStringConvertible {
     
     public var description: String {
-        return "AnyAudioPCMBuffer<\(buffer.frameLength)/\(buffer.frameCapacity)>"
+        return "AnyAudioPCMBuffer<\(buffer.frameLength)/\(buffer.frameCapacity),pts=\(presentationTimeStamp.seconds)>"
     }
 }

@@ -89,3 +89,10 @@ final public class AnyVideoPixelBuffer: VideoPixelBuffer {
         self.duration = duration
     }
 }
+
+extension AnyVideoPixelBuffer: CustomStringConvertible {
+    
+    public var description: String {
+        return "AnyVideoPixelBuffer<w=\(width),h=\(height),pts=\(presentationTimeStamp.seconds)>"
+    }
+}

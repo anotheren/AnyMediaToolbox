@@ -117,3 +117,10 @@ final public class AnyVideoH264Buffer: VideoH264Buffer {
         self.sampleBuffer = sampleBuffer
     }
 }
+
+extension AnyVideoH264Buffer: CustomStringConvertible {
+    
+    public var description: String {
+        return "AnyVideoH264Buffer<key=\(!dependsOnOthers),pts=\(presentationTimeStamp.seconds)>"
+    }
+}
