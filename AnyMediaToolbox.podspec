@@ -3,7 +3,7 @@ Pod::Spec.new do |s|
     s.version = '1.1.8'
     s.license = 'MIT'
     s.summary = 'AnyMediaToolbox is a toolbox for CoreMedia Types'
-    s.homepage = 'https://github.com/anotheren/AnyBinaryCodable'
+    s.homepage = 'https://github.com/anotheren/AnyMediaToolbox'
     s.authors = {
         'anotheren' => 'liudong.edward@gmail.com',
     }
