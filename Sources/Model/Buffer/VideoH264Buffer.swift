@@ -54,11 +54,11 @@ extension VideoH264Buffer {
 
 extension VideoH264Buffer {
     
-    public init(data: Data, timingInfo: CMSampleTimingInfo, formatDescription: CMVideoFormatDescription) throws {
+    public init(dataBytes: Data, formatDescription: CMVideoFormatDescription, timingInfo: CMSampleTimingInfo) throws {
         var status: OSStatus = noErr
         
         var blockBufferOut: CMBlockBuffer?
-        let length = data.count
+        let length = dataBytes.count
         status = CMBlockBufferCreateWithMemoryBlock(allocator: kCFAllocatorDefault,
                                                     memoryBlock: nil,
                                                     blockLength: length,
@@ -70,7 +70,7 @@ extension VideoH264Buffer {
                                                     blockBufferOut: &blockBufferOut)
         guard let blockBuffer = blockBufferOut else { throw NSError(domain: NSOSStatusErrorDomain, code: Int(status)) }
         
-        var data = data
+        var data = dataBytes
         status = CMBlockBufferReplaceDataBytes(with: &data,
                                                blockBuffer: blockBuffer,
                                                offsetIntoDestination: 0,
