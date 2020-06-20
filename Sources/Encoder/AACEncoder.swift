@@ -17,7 +17,7 @@ public protocol AACEncoderDelegate: class {
 
 public final class AACEncoder {
     
-    public var delegate: AACEncoderDelegate?
+    public weak var delegate: AACEncoderDelegate?
     
     private let lockQueue = DispatchQueue(label: "com.anotheren.AnyMediaToolbox.AACEncoder")
     
@@ -25,7 +25,7 @@ public final class AACEncoder {
     
     private var converter: AVAudioConverter?
     
-    private var isRunning: Bool = false
+    public private(set) var isRunning: Bool = false
     
     public init() { }
 }
@@ -34,6 +34,7 @@ extension AACEncoder {
     
     public func encode(buffer: AudioPCMBuffer) {
         lockQueue.async {
+            guard self.isRunning else { return }
             self.slice(buffer: buffer)
         }
     }
