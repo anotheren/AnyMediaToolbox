@@ -8,7 +8,7 @@
 
 import AVFoundation
 
-public protocol AACEncoderDelegate: class {
+public protocol AACEncoderDelegate: AnyObject {
     
     func encoder(_ encoder: AACEncoder, didSet formatDescription: CMAudioFormatDescription)
     func encoder(_ encoder: AACEncoder, didOutput buffer: AudioAACBuffer)

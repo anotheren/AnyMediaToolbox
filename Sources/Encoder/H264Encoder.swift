@@ -9,7 +9,7 @@
 import CoreMedia
 import VideoToolbox
 
-public protocol H264EncoderDelegate: class {
+public protocol H264EncoderDelegate: AnyObject {
     
     func encoder(_ encoder: H264Encoder, didSet formatDescription: CMVideoFormatDescription?)
     func encoder(_ encoder: H264Encoder, didOutput buffer: VideoH264Buffer)

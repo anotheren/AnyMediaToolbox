@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
         'anotheren' => 'liudong.edward@gmail.com',
     }
     s.source = { :git => 'https://github.com/anotheren/AnyMediaToolbox.git', :tag => s.version }
-    s.ios.deployment_target = '10.0'
+    s.ios.deployment_target = '12.0'
     s.swift_versions = ['5.2']
     s.frameworks = 'Foundation'
     s.source_files = 'Sources/**/*.swift'
