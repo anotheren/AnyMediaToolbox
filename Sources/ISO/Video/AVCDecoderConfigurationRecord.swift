@@ -158,17 +158,28 @@ extension AVCDecoderConfigurationRecord {
     public func makeFormatDescription() throws -> CMVideoFormatDescription {
         let sequenceParameterSetNALUnitsArray = Array(sequenceParameterSetNALUnits[0])
         let pictureParameterSetNALUnitsArray = Array(pictureParameterSetNALUnits[0])
-        var parameterSetPointers: [UnsafePointer<UInt8>] = [
-            UnsafePointer<UInt8>(sequenceParameterSetNALUnitsArray),
-            UnsafePointer<UInt8>(pictureParameterSetNALUnitsArray),
-        ]
-        var parameterSetSizes: [Int] = [
-            sequenceParameterSetNALUnits[0].count,
-            pictureParameterSetNALUnits[0].count,
-        ]
         
         var formatDescriptionOut: CMVideoFormatDescription?
-        let status = CMVideoFormatDescriptionCreateFromH264ParameterSets(allocator: kCFAllocatorDefault, parameterSetCount: 2, parameterSetPointers: &parameterSetPointers, parameterSetSizes: &parameterSetSizes, nalUnitHeaderLength: nalUnitHeaderLength, formatDescriptionOut: &formatDescriptionOut)
+        
+        var parameterSetSizes: [Int] = [
+            sequenceParameterSetNALUnitsArray.count,
+            pictureParameterSetNALUnitsArray.count,
+        ]
+        
+        var status: OSStatus = noErr
+        
+        sequenceParameterSetNALUnitsArray.withUnsafeBufferPointer { spsPoint in
+            pictureParameterSetNALUnitsArray.withUnsafeBufferPointer { ppsPoint in
+                let parameterSetPointers: [UnsafePointer<UInt8>] = [spsPoint.baseAddress!, ppsPoint.baseAddress!]
+                status = CMVideoFormatDescriptionCreateFromH264ParameterSets(allocator: kCFAllocatorDefault,
+                                                                             parameterSetCount: 2,
+                                                                             parameterSetPointers: parameterSetPointers,
+                                                                             parameterSetSizes: &parameterSetSizes,
+                                                                             nalUnitHeaderLength: nalUnitHeaderLength,
+                                                                             formatDescriptionOut: &formatDescriptionOut)
+            }
+        }
+        
         guard let formatDescription = formatDescriptionOut else {
             throw NSError(domain: NSOSStatusErrorDomain, code: Int(status))
         }
