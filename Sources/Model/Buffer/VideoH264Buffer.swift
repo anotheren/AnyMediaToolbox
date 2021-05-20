@@ -3,7 +3,7 @@
 //  AnyMediaToolbox
 //
 //  Created by 刘栋 on 2020/6/13.
-//  Copyright © 2020 anotheren.com. All rights reserved.
+//  Copyright © 2020-2021 anotheren.com. All rights reserved.
 //
 
 import AVFoundation
@@ -18,19 +18,19 @@ public protocol VideoH264Buffer: VideoCompressedBuffer {
 extension VideoH264Buffer {
     
     public var formatDescription: CMVideoFormatDescription? {
-        return CMSampleBufferGetFormatDescription(sampleBuffer)
+        return sampleBuffer.formatDescription
     }
     
     public var duration: CMTime {
-        return CMSampleBufferGetDuration(sampleBuffer)
+        return sampleBuffer.duration
     }
     
     public var presentationTimeStamp: CMTime {
-        return CMSampleBufferGetPresentationTimeStamp(sampleBuffer)
+        return sampleBuffer.presentationTimeStamp
     }
     
     public var decodeTimeStamp: CMTime {
-        return CMSampleBufferGetDecodeTimeStamp(sampleBuffer)
+        return sampleBuffer.decodeTimeStamp
     }
     
     public var videoCoder: VideoCoder {

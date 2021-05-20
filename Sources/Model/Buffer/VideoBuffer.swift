@@ -3,7 +3,7 @@
 //  AnyMediaToolbox
 //
 //  Created by 刘栋 on 2020/6/13.
-//  Copyright © 2020 anotheren.com. All rights reserved.
+//  Copyright © 2020-2021 anotheren.com. All rights reserved.
 //
 
 import AVFoundation

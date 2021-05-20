@@ -1,16 +1,3 @@
-PODS:
-  - AnyBinaryCodable (1.0.1)
-
-DEPENDENCIES:
-  - AnyBinaryCodable
-
-SPEC REPOS:
-  trunk:
-    - AnyBinaryCodable
-
-SPEC CHECKSUMS:
-  AnyBinaryCodable: c0053ddf14477dfba652b4b93743a61b257f3725
-
-PODFILE CHECKSUM: e076eb0327671911f3f1dabd67adb0964ee3c58d
+PODFILE CHECKSUM: a9fe45b42184c2b7f44d0460859daa61ff487e1e
 
 COCOAPODS: 1.10.1

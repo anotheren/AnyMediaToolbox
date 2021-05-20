@@ -3,11 +3,10 @@
 //  AnyMediaToolbox
 //
 //  Created by 刘栋 on 2018/4/12.
-//  Copyright © 2018-2020 anotheren.com. All rights reserved.
+//  Copyright © 2018-2021 anotheren.com. All rights reserved.
 //
 
 import AVFoundation
-import AnyBinaryCodable
 
 /* ISO/IEC 14496-15:2010
 
@@ -77,7 +76,7 @@ public struct AVCDecoderConfigurationRecord: Equatable {
         self.pictureParameterSetNALUnits = pictureParameterSetNALUnits
     }
 }
-
+/*
 // MARK: - BinaryCodable
 extension AVCDecoderConfigurationRecord: BinaryCodable {
     
@@ -152,7 +151,7 @@ extension AVCDecoderConfigurationRecord {
         return encoder.encode(self)
     }
 }
-
+*/
 extension AVCDecoderConfigurationRecord {
     
     public func makeFormatDescription() throws -> CMVideoFormatDescription {
