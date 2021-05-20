@@ -207,7 +207,7 @@ extension AudioPCMBuffer {
     }
 }
 
-final public class AnyAudioPCMBuffer: AudioPCMBuffer {
+public struct AnyAudioPCMBuffer: AudioPCMBuffer {
     
     public let buffer: AVAudioPCMBuffer
     public let presentationTimeStamp: CMTime

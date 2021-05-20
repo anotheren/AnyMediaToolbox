@@ -42,7 +42,16 @@ public protocol AudioCompressedBuffer: AudioBuffer {
     func dataBytes() throws -> Data
 }
 
-public enum AudioCoder: Equatable {
+public struct AudioCoder: RawRepresentable, Equatable {
     
-    case aac
+    public let rawValue: Int
+    
+    public init(rawValue: Int) {
+        self.rawValue = rawValue
+    }
+}
+
+extension AudioCoder {
+    
+    public static let aac: AudioCoder = .init(rawValue: 1)
 }

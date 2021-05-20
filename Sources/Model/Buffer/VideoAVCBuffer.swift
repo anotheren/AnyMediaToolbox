@@ -109,7 +109,7 @@ extension VideoAVCBuffer {
     }
 }
 
-final public class AnyVideoH264Buffer: VideoAVCBuffer {
+public struct AnyVideoH264Buffer: VideoAVCBuffer {
     
     public let sampleBuffer: CMSampleBuffer
     

@@ -81,10 +81,6 @@ final public class AnyAudioAACBuffer: AudioAACBuffer {
 extension AnyAudioAACBuffer: CustomStringConvertible {
     
     public var description: String {
-        if #available(iOS 11.0, *) {
-            return "AnyAudioAACBuffer<\(buffer.byteLength)/\(buffer.byteCapacity),pts=\(presentationTimeStamp.seconds)>"
-        } else {
-            return "AnyAudioAACBuffer<pts=\(presentationTimeStamp.seconds)>"
-        }
+        return "AnyAudioAACBuffer<\(buffer.byteLength)/\(buffer.byteCapacity),pts=\(presentationTimeStamp.seconds)>"
     }
 }

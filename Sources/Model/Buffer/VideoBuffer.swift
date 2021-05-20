@@ -30,8 +30,25 @@ public protocol VideoCompressedBuffer: VideoBuffer {
     func dataBytes() throws -> Data
 }
 
-public enum VideoCoder: Equatable {
+public struct VideoCoder: RawRepresentable, Equatable {
     
-    case avc
-    case hevc
+    public let rawValue: String
+    
+    public init(rawValue: String) {
+        self.rawValue = rawValue
+    }
+}
+
+extension VideoCoder: CustomStringConvertible {
+    
+    public var description: String {
+        return rawValue
+    }
+}
+
+extension VideoCoder {
+    
+    public static let avc: VideoCoder = .init(rawValue: "AAC")
+    
+    public static let hevc: VideoCoder = .init(rawValue: "HEVC")
 }
