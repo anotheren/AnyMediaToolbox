@@ -1,5 +1,5 @@
 //
-//  H264Encoder.swift
+//  AVCEncoder.swift
 //  AnyMediaToolbox
 //
 //  Created by 刘栋 on 2018/1/20.
@@ -9,16 +9,16 @@
 import CoreMedia
 import VideoToolbox
 
-public protocol H264EncoderDelegate: AnyObject {
+public protocol AVCEncoderDelegate: AnyObject {
     
-    func encoder(_ encoder: H264Encoder, didSet formatDescription: CMVideoFormatDescription?)
-    func encoder(_ encoder: H264Encoder, didOutput buffer: VideoH264Buffer)
-    func encoder(_ encoder: H264Encoder, didCatch error: Error)
+    func encoder(_ encoder: AVCEncoder, didSet formatDescription: CMVideoFormatDescription?)
+    func encoder(_ encoder: AVCEncoder, didOutput buffer: VideoAVCBuffer)
+    func encoder(_ encoder: AVCEncoder, didCatch error: Error)
 }
 
-final public class H264Encoder {
+final public class AVCEncoder {
     
-    public weak var delegate: H264EncoderDelegate?
+    public weak var delegate: AVCEncoderDelegate?
     
     private let lockQueue = DispatchQueue(label: "com.anotheren.AnyMediaToolbox.H264Encoder")
     
@@ -41,7 +41,7 @@ final public class H264Encoder {
     
     private var invalidateSession = true
     
-    public var scalingMode: VTScalingMode = H264Encoder.Default.scalingMode {
+    public var scalingMode: VTScalingMode = AVCEncoder.Default.scalingMode {
         didSet {
             if scalingMode != oldValue {
                 invalidateSession = true
@@ -49,7 +49,7 @@ final public class H264Encoder {
         }
     }
     
-    public var width: Int32 = H264Encoder.Default.width {
+    public var width: Int32 = AVCEncoder.Default.width {
         didSet {
             if width != oldValue {
                 invalidateSession = true
@@ -57,7 +57,7 @@ final public class H264Encoder {
         }
     }
     
-    public var height: Int32 = H264Encoder.Default.height {
+    public var height: Int32 = AVCEncoder.Default.height {
         didSet {
             if height != oldValue {
                 invalidateSession = true
@@ -75,7 +75,7 @@ final public class H264Encoder {
     }
     #endif
     
-    public var profileLevel: VTProfileLevel = H264Encoder.Default.profileLevel {
+    public var profileLevel: VTProfileLevel = AVCEncoder.Default.profileLevel {
         didSet {
             if profileLevel != oldValue  {
                 invalidateSession = true
@@ -83,7 +83,7 @@ final public class H264Encoder {
         }
     }
     
-    public var bitrate: UInt32 = H264Encoder.Default.bitrate {
+    public var bitrate: UInt32 = AVCEncoder.Default.bitrate {
         didSet {
             if bitrate != oldValue {
                 lockQueue.async {
@@ -94,7 +94,7 @@ final public class H264Encoder {
         }
     }
     
-    public var expectedFrameRate: Double = H264Encoder.Default.expectedFrameRate {
+    public var expectedFrameRate: Double = AVCEncoder.Default.expectedFrameRate {
         didSet {
             if expectedFrameRate != oldValue {
                 lockQueue.async {
@@ -105,7 +105,7 @@ final public class H264Encoder {
         }
     }
     
-    public var maxKeyFrameIntervalDuration: Double = H264Encoder.Default.maxKeyFrameIntervalDuration  {
+    public var maxKeyFrameIntervalDuration: Double = AVCEncoder.Default.maxKeyFrameIntervalDuration  {
         didSet {
             if maxKeyFrameIntervalDuration != oldValue {
                 lockQueue.async {
@@ -116,9 +116,9 @@ final public class H264Encoder {
         }
     }
     
-    public var dataRateLimits: [Int] = H264Encoder.Default.dataRateLimits {
+    public var dataRateLimits: [Int] = AVCEncoder.Default.dataRateLimits {
         didSet {
-            if dataRateLimits != oldValue, dataRateLimits != H264Encoder.Default.dataRateLimits {
+            if dataRateLimits != oldValue, dataRateLimits != AVCEncoder.Default.dataRateLimits {
                 lockQueue.async {
                     guard let session: VTCompressionSession = self._session else { return }
                     self.status = session.setProperty(.dataRateLimits, value: self.dataRateLimits as CFTypeRef)
@@ -128,7 +128,7 @@ final public class H264Encoder {
     }
     
     private var sourceImageBufferAttributes: [CFString: CFTypeRef] {
-        var attributes = H264Encoder.Default.attributes
+        var attributes = AVCEncoder.Default.attributes
         attributes[kCVPixelBufferWidthKey] = width as CFTypeRef
         attributes[kCVPixelBufferHeightKey] = height as CFTypeRef
         return attributes
@@ -136,7 +136,7 @@ final public class H264Encoder {
     
     private var callback: VTCompressionOutputCallback = { (outputCallbackRefCon: UnsafeMutableRawPointer?, sourceFrameRefCon: UnsafeMutableRawPointer?, status: OSStatus, infoFlags: VTEncodeInfoFlags, sampleBuffer: CMSampleBuffer?) in
         guard let sampleBuffer: CMSampleBuffer = sampleBuffer, let refCon = outputCallbackRefCon, status == noErr else { return }
-        let encoder = Unmanaged<H264Encoder>.fromOpaque(refCon).takeUnretainedValue()
+        let encoder = Unmanaged<AVCEncoder>.fromOpaque(refCon).takeUnretainedValue()
         encoder.formatDescription = CMSampleBufferGetFormatDescription(sampleBuffer)
         let buffer = AnyVideoH264Buffer(sampleBuffer: sampleBuffer)
         encoder.delegate?.encoder(encoder, didOutput: buffer)
@@ -165,7 +165,7 @@ final public class H264Encoder {
         }
         #endif
         
-        if dataRateLimits != H264Encoder.Default.dataRateLimits {
+        if dataRateLimits != AVCEncoder.Default.dataRateLimits {
             properties[.dataRateLimits] = dataRateLimits as CFTypeRef
         }
         
@@ -238,7 +238,7 @@ final public class H264Encoder {
     }
 }
 
-extension H264Encoder {
+extension AVCEncoder {
     
     private struct Default {
         

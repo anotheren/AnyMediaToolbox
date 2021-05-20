@@ -1,5 +1,5 @@
 //
-//  VideoH264Buffer.swift
+//  VideoAVCBuffer.swift
 //  AnyMediaToolbox
 //
 //  Created by 刘栋 on 2020/6/13.
@@ -8,14 +8,14 @@
 
 import AVFoundation
 
-public protocol VideoH264Buffer: VideoCompressedBuffer {
+public protocol VideoAVCBuffer: VideoCompressedBuffer {
     
     var sampleBuffer: CMSampleBuffer { get }
     
     init(sampleBuffer: CMSampleBuffer)
 }
 
-extension VideoH264Buffer {
+extension VideoAVCBuffer {
     
     public var formatDescription: CMVideoFormatDescription? {
         return sampleBuffer.formatDescription
@@ -38,7 +38,7 @@ extension VideoH264Buffer {
     }
 }
 
-extension VideoH264Buffer {
+extension VideoAVCBuffer {
     
     public var dependsOnOthers: Bool {
         if let attachments: CFArray = CMSampleBufferGetSampleAttachmentsArray(sampleBuffer, createIfNecessary: false) {
@@ -52,7 +52,7 @@ extension VideoH264Buffer {
     }
 }
 
-extension VideoH264Buffer {
+extension VideoAVCBuffer {
     
     public init(dataBytes: Data, formatDescription: CMVideoFormatDescription, timingInfo: CMSampleTimingInfo) throws {
         var status: OSStatus = noErr
@@ -109,7 +109,7 @@ extension VideoH264Buffer {
     }
 }
 
-final public class AnyVideoH264Buffer: VideoH264Buffer {
+final public class AnyVideoH264Buffer: VideoAVCBuffer {
     
     public let sampleBuffer: CMSampleBuffer
     

@@ -21,11 +21,11 @@
 		A01FA2AF24642FEA00A02DDC /* Ex+Bool.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FA29724642FEA00A02DDC /* Ex+Bool.swift */; };
 		A01FA2B124642FEA00A02DDC /* Ex+AudioStreamBasicDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FA29924642FEA00A02DDC /* Ex+AudioStreamBasicDescription.swift */; };
 		A01FA2B224642FEA00A02DDC /* Ex+VTCompressionSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FA29A24642FEA00A02DDC /* Ex+VTCompressionSession.swift */; };
-		A01FA2B524642FEA00A02DDC /* H264Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FA29F24642FEA00A02DDC /* H264Encoder.swift */; };
+		A01FA2B524642FEA00A02DDC /* AVCEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = A01FA29F24642FEA00A02DDC /* AVCEncoder.swift */; };
 		A05824492498B8860006E2D1 /* AudioPCMBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824422498B8860006E2D1 /* AudioPCMBuffer.swift */; };
 		A058244A2498B8860006E2D1 /* VideoBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824432498B8860006E2D1 /* VideoBuffer.swift */; };
 		A058244B2498B8860006E2D1 /* AudioBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824442498B8860006E2D1 /* AudioBuffer.swift */; };
-		A058244C2498B8860006E2D1 /* VideoH264Buffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824452498B8860006E2D1 /* VideoH264Buffer.swift */; };
+		A058244C2498B8860006E2D1 /* VideoAVCBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824452498B8860006E2D1 /* VideoAVCBuffer.swift */; };
 		A058244D2498B8860006E2D1 /* AudioAACBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824462498B8860006E2D1 /* AudioAACBuffer.swift */; };
 		A058244E2498B8860006E2D1 /* MediaBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824472498B8860006E2D1 /* MediaBuffer.swift */; };
 		A058244F2498B8860006E2D1 /* VideoPixelBuffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A05824482498B8860006E2D1 /* VideoPixelBuffer.swift */; };
@@ -49,11 +49,11 @@
 		A01FA29724642FEA00A02DDC /* Ex+Bool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ex+Bool.swift"; sourceTree = "<group>"; };
 		A01FA29924642FEA00A02DDC /* Ex+AudioStreamBasicDescription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ex+AudioStreamBasicDescription.swift"; sourceTree = "<group>"; };
 		A01FA29A24642FEA00A02DDC /* Ex+VTCompressionSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Ex+VTCompressionSession.swift"; sourceTree = "<group>"; };
-		A01FA29F24642FEA00A02DDC /* H264Encoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = H264Encoder.swift; sourceTree = "<group>"; };
+		A01FA29F24642FEA00A02DDC /* AVCEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVCEncoder.swift; sourceTree = "<group>"; };
 		A05824422498B8860006E2D1 /* AudioPCMBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioPCMBuffer.swift; sourceTree = "<group>"; };
 		A05824432498B8860006E2D1 /* VideoBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoBuffer.swift; sourceTree = "<group>"; };
 		A05824442498B8860006E2D1 /* AudioBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioBuffer.swift; sourceTree = "<group>"; };
-		A05824452498B8860006E2D1 /* VideoH264Buffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoH264Buffer.swift; sourceTree = "<group>"; };
+		A05824452498B8860006E2D1 /* VideoAVCBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoAVCBuffer.swift; sourceTree = "<group>"; };
 		A05824462498B8860006E2D1 /* AudioAACBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioAACBuffer.swift; sourceTree = "<group>"; };
 		A05824472498B8860006E2D1 /* MediaBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaBuffer.swift; sourceTree = "<group>"; };
 		A05824482498B8860006E2D1 /* VideoPixelBuffer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPixelBuffer.swift; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 		A01FA29C24642FEA00A02DDC /* Encoder */ = {
 			isa = PBXGroup;
 			children = (
-				A01FA29F24642FEA00A02DDC /* H264Encoder.swift */,
+				A01FA29F24642FEA00A02DDC /* AVCEncoder.swift */,
 				A0724DD0249B4C9B0008847B /* AACEncoder.swift */,
 			);
 			path = Encoder;
@@ -183,7 +183,7 @@
 				A05824462498B8860006E2D1 /* AudioAACBuffer.swift */,
 				A05824432498B8860006E2D1 /* VideoBuffer.swift */,
 				A05824482498B8860006E2D1 /* VideoPixelBuffer.swift */,
-				A05824452498B8860006E2D1 /* VideoH264Buffer.swift */,
+				A05824452498B8860006E2D1 /* VideoAVCBuffer.swift */,
 			);
 			path = Buffer;
 			sourceTree = "<group>";
@@ -272,7 +272,7 @@
 				A01FA2AD24642FEA00A02DDC /* SamplingFrequency.swift in Sources */,
 				A01FA2AC24642FEA00A02DDC /* AudioObjectType.swift in Sources */,
 				A058244F2498B8860006E2D1 /* VideoPixelBuffer.swift in Sources */,
-				A058244C2498B8860006E2D1 /* VideoH264Buffer.swift in Sources */,
+				A058244C2498B8860006E2D1 /* VideoAVCBuffer.swift in Sources */,
 				A01FA2B224642FEA00A02DDC /* Ex+VTCompressionSession.swift in Sources */,
 				A058244B2498B8860006E2D1 /* AudioBuffer.swift in Sources */,
 				A01FA2AB24642FEA00A02DDC /* AudioSpecificConfig.swift in Sources */,
@@ -285,7 +285,7 @@
 				A01FA2B124642FEA00A02DDC /* Ex+AudioStreamBasicDescription.swift in Sources */,
 				A01FA2AF24642FEA00A02DDC /* Ex+Bool.swift in Sources */,
 				A058244A2498B8860006E2D1 /* VideoBuffer.swift in Sources */,
-				A01FA2B524642FEA00A02DDC /* H264Encoder.swift in Sources */,
+				A01FA2B524642FEA00A02DDC /* AVCEncoder.swift in Sources */,
 				A01FA2A024642FEA00A02DDC /* VTCompressionPropertyKey.swift in Sources */,
 				A0724DD1249B4C9B0008847B /* AACEncoder.swift in Sources */,
 				A01FA2A924642FEA00A02DDC /* HEVCDecoderConfigurationRecord.swift in Sources */,
